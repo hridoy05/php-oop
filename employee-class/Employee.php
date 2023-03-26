@@ -9,6 +9,13 @@ class Employee{
     public $hourlyRate = 15;
     public $totalLeaveTaken;
     public $workingDays;
+
+    function __construct($id, $name, $totalLeaveTaken){
+        $this->id=$id;
+        $this->name=$name;
+        $this->totalLeaveTaken = $totalLeaveTaken;
+
+    }
     function getSalaryAmount($totalDays): int {
         $this->workingDays = $totalDays - $this->totalLeaveTaken;
         $salary = $this->workingDays * $this->workingHoursPerDay * $this->hourlyRate;
@@ -17,9 +24,7 @@ class Employee{
     }
 }
 
-$emp1 = new Employee();
-$emp1->id=101;
-$emp1->name="John, Smith";
-$emp1->totalLeaveTaken = 4;
+$emp1 = new Employee(102, 'Hriody',5);
+
 $salary = $emp1->getSalaryAmount(20);
 echo "$emp1->name salary is $salary";
